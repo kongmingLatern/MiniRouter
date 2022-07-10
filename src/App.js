@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, useParams } from "react-router-dom"
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
 export default function App() {
   return (
@@ -8,7 +8,6 @@ export default function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />}></Route>
             <Route path="product" element={<Product />}>
-              <Route path="123" element={<ProductDetail />}></Route>
               {/* 动态路由 */}
               <Route path=":id" element={<ProductDetail />}></Route>
             </Route>
@@ -48,9 +47,11 @@ function Product() {
   )
 }
 function ProductDetail() {
+  const params = useParams()
   return (
     <>
       <h1>ProductDetail</h1>
+      <h2>{params.id}</h2>
     </>
   )
 }
