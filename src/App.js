@@ -6,10 +6,15 @@ export default function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home />}></Route>
+            {/* 首页 */}
+            <Route index element={<Home />} />
+            {/* 商品路由 */}
             <Route path="product" element={<Product />}>
               {/* 动态路由 */}
-              <Route path=":id" element={<ProductDetail />}></Route>
+              <Route path=":id" element={<ProductDetail />} />
+            </Route>
+            {/* 404 */}
+            <Route path="*" element={<NoMatch />}>
             </Route>
           </Route>
         </Routes>
@@ -52,6 +57,14 @@ function ProductDetail() {
     <>
       <h1>ProductDetail</h1>
       <h2>{params.id}</h2>
+    </>
+  )
+}
+
+function NoMatch() {
+  return (
+    <>
+      <h1>404</h1>
     </>
   )
 }
