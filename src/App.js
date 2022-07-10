@@ -7,7 +7,11 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />}></Route>
-            <Route path="product" element={<Product />}></Route>
+            <Route path="product" element={<Product />}>
+              <Route path="123" element={<ProductDetail />}></Route>
+              {/* 动态路由 */}
+              <Route path=":id" element={<ProductDetail />}></Route>
+            </Route>
           </Route>
         </Routes>
       </Router>
@@ -37,6 +41,16 @@ function Product() {
   return (
     <>
       <h1>Product</h1>
+      <Link to="/product/123" style={{ "marginRight": "20px" }}>查看商品123</Link>
+      <Link to="/product/1234444">查看商品1234444</Link>
+      <Outlet />
+    </>
+  )
+}
+function ProductDetail() {
+  return (
+    <>
+      <h1>ProductDetail</h1>
     </>
   )
 }
