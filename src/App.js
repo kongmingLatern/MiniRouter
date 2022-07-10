@@ -1,10 +1,11 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 export default function App() {
   return (
     <div>
       <Router>
         <Routes>
-          <Route element={<Home />}></Route>
+          <Route index element={<Home />}></Route>
+          <Route path="product" element={<Product />}></Route>
         </Routes>
       </Router>
     </div>
