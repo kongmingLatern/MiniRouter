@@ -1,7 +1,3 @@
 export default function BrowserRouter({ children }) {
-  return (
-    <>
-      {children}
-    </>
-  )
+  return children
 };
