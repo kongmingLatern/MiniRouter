@@ -1,4 +1,9 @@
 export default function useRoutes(routes) {
-  console.log(routes);
-  return []
+  const pathName = window.location.pathname
+
+  return routes.map(route => {
+
+    const match = pathName === route.path || pathName === '/' + route.path
+    return match ? route.element : null
+  })
 };
