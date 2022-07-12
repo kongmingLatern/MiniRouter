@@ -22,30 +22,32 @@
 //     </div>
 //   )
 // }
-import { BrowserRouter as Router, Routes, Route } from "./mini-react-router"
+import { BrowserRouter as Router, Routes, Route, Link } from "./mini-react-router"
 export default function App() {
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="product" element={<Product />}></Route>
+          <Route path="/" element={<Layout />}>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="product" element={<Product />}></Route>
+          </Route>
         </Routes>
       </Router>
     </>
   )
 }
 
-// function Layout() {
-//   return (
-//     <>
-//       <h1>Layout</h1>
-//       <Link to="/" style={{ "marginRight": "20px" }}>首页</Link>
-//       <Link to="/product">商品</Link>
-//       <Outlet />
-//     </>
-//   )
-// }
+function Layout() {
+  return (
+    <>
+      <h1>Layout</h1>
+      <Link to="/" style={{ "marginRight": "20px" }}>首页</Link>
+      <Link to="/product">商品</Link>
+      {/* <Outlet /> */}
+    </>
+  )
+}
 
 function Home() {
   return (
