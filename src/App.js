@@ -22,7 +22,7 @@
 //     </div>
 //   )
 // }
-import { BrowserRouter as Router, Routes, Route, Link } from "./mini-react-router"
+import { BrowserRouter as Router, Routes, Route, Link } from "./mini-react-router/router"
 export default function App() {
   return (
     <>
