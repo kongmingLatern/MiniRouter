@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NavigationContext = React.createContext
+const NavigationContext = React.createContext()
 
 export {
   NavigationContext
