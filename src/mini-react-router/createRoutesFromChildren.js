@@ -8,6 +8,10 @@ export function createRoutesFromChildren(children) {
       element: child.props.element,
       path: child.props.path
     }
+    if (child.props.children) {
+      // route array
+      route.children = createRoutesFromChildren(child.props.children)
+    }
     routes.push(route)
   })
 
