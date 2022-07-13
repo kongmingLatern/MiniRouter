@@ -4,6 +4,6 @@ import { RouteContext } from "../Context";
 export default function useOutlet() {
   // 渲染 children
   const { outlet } = React.useContext(RouteContext)
-  console.log(outlet);
+  console.log('outlet', outlet);
   return outlet
 };

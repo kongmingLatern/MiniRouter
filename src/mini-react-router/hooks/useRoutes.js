@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom"
 import { RouteContext } from "../Context"
 import { normalizePathname } from "../utils"
+import useLocation from "./useLocation"
 export default function useRoutes(routes) {
   /* 
   routes
@@ -9,8 +10,10 @@ export default function useRoutes(routes) {
     element: {$$typeof:symbol(react.element)}
     path: '/' 
   */
+  const location = useLocation()
   // console.log(routes);
-  const pathName = window.location.pathname
+  const pathName = location.pathname
+  // console.log('pathName', pathName);
 
   return routes.map(route => {
     // const match = pathName === route.path || pathName === '/' + route.path
@@ -20,20 +23,23 @@ export default function useRoutes(routes) {
 
     // console.log('route', pathName, route);
 
+    // console.log('routeContext', RouteContext);
     return match &&
       route.children.map(child => {
-        let m = normalizePathname(child.path) === pathName
+        let m = normalizePathname(child.path || '/') === pathName
         return (
-          m &&
-          <RouteContext.Provider
-            value={
-              { outlet: child.element }
-            }
-            children={
-              route.element !== undefined
-                ? route.element
-                : <Outlet />
-            } />
+          m && (
+            <RouteContext.Provider
+              value={
+                { outlet: child.element }
+              }
+              children={
+                route.element !== undefined
+                  ? route.element
+                  : <Outlet />
+              } />
+          )
+
         )
       })
   })

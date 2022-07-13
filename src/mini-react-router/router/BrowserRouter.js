@@ -12,15 +12,14 @@ export default function BrowserRouter({ children }) {
 
   const history = historyRef.current
 
-  const [state, setstate] = useState({
+  const [state, setState] = useState({
     location: history.location
   })
 
   useLayoutEffect(() => {
-    history.listen(setstate)
+    history.listen(setState)
   }, [history])
 
-  console.log('history', history);
 
   return <Router children={children} navigator={history} location={state.location} />
 };
