@@ -20,20 +20,21 @@ export default function useRoutes(routes) {
 
     // console.log('route', pathName, route);
 
-    return match && route.children.map(child => {
-      let m = normalizePathname(child.path) === pathName
-
-      return m &&
-        <RouteContext.Provider
-          value={
-            { outlet: child.element }
-          }
-          children={
-            route.element !== undefined
-              ? route.element
-              : <Outlet />
-          }>
-        </RouteContext.Provider>
-    })
+    return match &&
+      route.children.map(child => {
+        let m = normalizePathname(child.path) === pathName
+        return (
+          m &&
+          <RouteContext.Provider
+            value={
+              { outlet: child.element }
+            }
+            children={
+              route.element !== undefined
+                ? route.element
+                : <Outlet />
+            } />
+        )
+      })
   })
 };
