@@ -1,6 +1,7 @@
-import { Outlet } from "react-router-dom"
+// import { Outlet } from "react-router-dom"
 import { RouteContext } from "../Context"
 import { normalizePathname } from "../utils"
+import { Outlet } from "../router"
 import useLocation from "./useLocation"
 export default function useRoutes(routes) {
   /* 
