@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import { createBrowserHistory } from "history";
 import Router from "./Router";
 
 export default function BrowserRouter({ children }) {
-  // 组件卸载之前
+
   let historyRef = React.useRef(null)
 
   if (historyRef.current === null) {
@@ -12,5 +12,14 @@ export default function BrowserRouter({ children }) {
 
   const history = historyRef.current
 
-  return <Router children={children} navigator={history} />
+  const [state, setstate] = useState({
+    location: history.location
+  })
+
+  useLayoutEffect(() => {
+    history.listen(setstate)
+  }, [history])
+
+
+  return <Router children={children} navigator={history} location={state} />
 };
