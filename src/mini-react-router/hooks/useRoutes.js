@@ -1,3 +1,6 @@
+import { Outlet } from "react-router-dom"
+import { RouteContext } from "../Context"
+import { normalizePathname } from "../utils"
 export default function useRoutes(routes) {
   /* 
   routes
@@ -17,6 +20,20 @@ export default function useRoutes(routes) {
 
     // console.log('route', pathName, route);
 
-    return match ? route.element : null
+    return match && route.children.map(child => {
+      let m = normalizePathname(child.path) === pathName
+
+      return m &&
+        <RouteContext.Provider
+          value={
+            { outlet: child.element }
+          }
+          children={
+            route.element !== undefined
+              ? route.element
+              : <Outlet />
+          }>
+        </RouteContext.Provider>
+    })
   })
 };
