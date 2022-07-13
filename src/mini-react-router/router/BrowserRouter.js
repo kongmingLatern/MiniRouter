@@ -20,6 +20,7 @@ export default function BrowserRouter({ children }) {
     history.listen(setstate)
   }, [history])
 
+  console.log('history', history);
 
-  return <Router children={children} navigator={history} location={state} />
+  return <Router children={children} navigator={history} location={state.location} />
 };
