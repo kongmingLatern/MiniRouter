@@ -16,6 +16,9 @@ export default function BrowserRouter({ children }) {
     location: history.location
   })
 
+  // console.log('state', state.location);
+  // useLocation() 中的 location
+  // {pathname: "/", search: "", hash: "", state: null, key: "default"}
   useLayoutEffect(() => {
     history.listen(setState)
   }, [history])

@@ -11,6 +11,8 @@ export default function useRoutes(routes) {
     path: '/' 
   */
   const location = useLocation()
+  console.log('useRoutes');
+  console.log(location);
   // console.log(routes);
   const pathName = location.pathname
   // console.log('pathName', pathName);
@@ -18,6 +20,7 @@ export default function useRoutes(routes) {
   return routes.map(route => {
     // const match = pathName === route.path || pathName === '/' + route.path
     // console.log('route map 遍历', route);
+    console.log('useRoutes 子路由');
     // 匹配父路由
     const match = pathName.startsWith(route.path)
 
