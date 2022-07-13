@@ -22,7 +22,7 @@
 //     </div>
 //   )
 // }
-import { BrowserRouter as Router, Routes, Route, Link } from "./mini-react-router/router"
+import { BrowserRouter as Router, Routes, Route, Link, Outlet } from "./mini-react-router/router"
 export default function App() {
   return (
     <>
@@ -44,7 +44,7 @@ function Layout() {
       <h1>Layout</h1>
       <Link to="/" style={{ "marginRight": "20px" }}>首页</Link>
       <Link to="/product">商品</Link>
-      {/* <Outlet /> */}
+      <Outlet />
     </>
   )
 }
