@@ -63,9 +63,10 @@ function Product() {
   return (
     <>
       <h1>Product</h1>
-      {/* <Link to="/product/123" style={{ "marginRight": "20px" }}>查看商品123</Link> */}
+      {/* <Link to="123">跳转详情页</Link> */}
+      <Link to="/product/123">查看商品123</Link>
       {/* <Link to="/product/1234444">查看商品1234444</Link> */}
-      {/* <Outlet /> */}
+      <Outlet />
     </>
   )
 }
