@@ -23,6 +23,7 @@
 //   )
 // }
 import { BrowserRouter as Router, Routes, Route, Link, Outlet } from "./mini-react-router/router"
+import { useNavigate, useParams } from "./mini-react-router/hooks"
 export default function App() {
   return (
     <>
@@ -30,7 +31,9 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="/" element={<Home />} />
-            <Route path="product" element={<Product />} />
+            <Route path="product" element={<Product />} >
+              <Route path=":id" element={<ProductDetail />} />
+            </Route>
           </Route>
         </Routes>
       </Router>
@@ -66,20 +69,15 @@ function Product() {
     </>
   )
 }
-// function ProductDetail() {
-//   const params = useParams()
-//   return (
-//     <>
-//       <h1>ProductDetail</h1>
-//       <h2>{params.id}</h2>
-//     </>
-//   )
-// }
+function ProductDetail() {
+  const params = useParams()
+  const navigate = useNavigate()
+  return (
+    <>
+      <h1>ProductDetail</h1>
+      <h2>{params.id}</h2>
+      <button onClick={() => navigate("/")}>go Home</button>
+    </>
+  )
+}
 
-// function NoMatch() {
-//   return (
-//     <>
-//       <h1>404 NOT FOUND</h1>
-//     </>
-//   )
-// }
