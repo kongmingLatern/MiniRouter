@@ -23,8 +23,9 @@
 //   )
 // }
 import { BrowserRouter as Router, Routes, Route, Link, Outlet } from "./mini-react-router/router"
-import { useNavigate, useParams } from "./mini-react-router/hooks"
+import { useLocation, useNavigate, useParams } from "./mini-react-router/hooks"
 import { AuthProvider } from "./mini-react-router/Login/auth"
+import useAuth from './mini-react-router/hooks/useAuth';
 export default function App() {
   return (
     <div className="app">
@@ -92,6 +93,20 @@ function ProductDetail() {
     </>
   )
 }
+
+function RequireAuth() {
+  const auth = useAuth()
+  const location = useLocation()
+  if (!auth.user) {
+    return <Navigate to={'/login'} state={{ from: location }} replace={true}></Navigate>
+  }
+  return (
+    <div>
+      <h1>RequireAuth</h1>
+    </div>
+  )
+}
+
 
 function User() {
   return (
