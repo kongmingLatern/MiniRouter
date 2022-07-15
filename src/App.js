@@ -148,38 +148,38 @@ function Login() {
     return <Navigate to={from} />
   }
 
-  // function handleSubmit(event) {
-  //   event.preventDefault();
+  function handleSubmit(event) {
+    event.preventDefault();
 
-  //   let formData = new FormData(event.currentTarget);
-  //   let newUser = formData.get("username");
+    let formData = new FormData(event.currentTarget);
+    let newUser = formData.get("username");
 
-  //   auth.signin({ newUser }, () => {
-  //     navigate(from, { replace: true });
-  //   });
-  // }
-  const submit = (e) => {
-    e.preventDefault();
-    const formDate = new FormData(e.currentTarget)
-    const newUser = formDate.get('username')
-    console.log('newUser', newUser);
     auth.signin(newUser, () => {
-      navigate(from, { replace: true })
-    })
+      navigate(from, { replace: true });
+    });
   }
+  // const submit = (e) => {
+  //   e.preventDefault();
+  //   const formDate = new FormData(e.currentTarget)
+  //   const newUser = formDate.get('username')
+  //   console.log('newUser', newUser);
+  //   auth.signin(newUser, () => {
+  //     navigate(from, { replace: true })
+  //   })
+  // }
   return (
     <div>
       <h1>Login</h1>
-      {/* <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>
           Username: <input name="username" type="text" />
         </label>{" "}
         <button type="submit">Login</button>
-      </form> */}
-      <form onSubmit={submit}>
+      </form>
+      {/* <form onSubmit={handleSubmit}>
         <input type="text" name="username" />
         <button type="submit">login</button>
-      </form>
+      </form> */}
     </div>
   )
 }
