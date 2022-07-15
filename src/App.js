@@ -133,8 +133,11 @@ function Login() {
   const auth = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
-
   const from = location.state?.from.pathname || '/'
+
+  if (auth.user) {
+    return <Navigate to={from} />
+  }
 
   const submit = (e) => {
     const formData = new FormData()
@@ -148,7 +151,7 @@ function Login() {
       <h1>Login</h1>
       <form onSubmit={submit}>
         <input type="text" name="username" />
-        <button type="submit">提交</button>
+        <button type="submit">Login</button>
       </form>
     </div>
   )
