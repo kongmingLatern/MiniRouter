@@ -14,9 +14,23 @@ const fakeAuthProvider = {
 const AuthContext = React.createContext()
 
 export function AuthProvider({ children }) {
+  const [user, setUser] = React.useState(null)
+
+  const signin = (newUser, callback) => {
+    setUser(newUser)
+    callback()
+  }
+
+  const signout = (newUser, callback) => {
+    setUser(null)
+    callback()
+  }
+
+  let value = {
+    user, signin, signout
+  }
+
   return (
-    <AuthContext.Provider>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={value} children={children} />
   )
 };
