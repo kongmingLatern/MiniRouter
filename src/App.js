@@ -24,20 +24,26 @@
 // }
 import { BrowserRouter as Router, Routes, Route, Link, Outlet } from "./mini-react-router/router"
 import { useNavigate, useParams } from "./mini-react-router/hooks"
+import { AuthProvider } from "./mini-react-router/Login/auth"
 export default function App() {
   return (
-    <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="product" element={<Product />} >
-              <Route path=":id" element={<ProductDetail />} />
+    <div className="app">
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="product" element={<Product />} >
+                <Route path=":id" element={<ProductDetail />} />
+              </Route>
+              <Route path="user" element={<User />} />
+              <Route path="login" element={<Login />} />
+              <Route path="*" element={<NoMatch />} />
             </Route>
-          </Route>
-        </Routes>
-      </Router>
-    </>
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </div>
   )
 }
 
@@ -45,8 +51,13 @@ function Layout() {
   return (
     <>
       <h1>Layout</h1>
-      <Link to="/" style={{ "marginRight": "20px" }}>首页</Link>
+      <Link to="/">首页</Link>
+      <br />
       <Link to="/product">商品</Link>
+      <br />
+      <Link to="/user">用户中心</Link>
+      <br />
+      <Link to="/Login">登录</Link>
       <Outlet />
     </>
   )
@@ -82,3 +93,24 @@ function ProductDetail() {
   )
 }
 
+function User() {
+  return (
+    <div>
+      <h1>User</h1>
+    </div>
+  )
+}
+function Login() {
+  return (
+    <div>
+      <h1>Login</h1>
+    </div>
+  )
+}
+function NoMatch() {
+  return (
+    <div>
+      <h1>404</h1>
+    </div>
+  )
+}
