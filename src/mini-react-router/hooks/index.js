@@ -3,6 +3,7 @@ import useNavigate from "./useNavigate";
 import useLocation from "./useLocation";
 import useOutlet from "./useOutlet";
 import useParams from "./useParams";
+import useAuth from "./useAuth";
 
 
 export {
@@ -10,5 +11,6 @@ export {
   useNavigate,
   useLocation,
   useOutlet,
-  useParams
+  useParams,
+  useAuth
 }

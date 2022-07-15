@@ -11,7 +11,7 @@ const fakeAuthProvider = {
   }
 }
 
-const AuthContext = React.createContext()
+export const AuthContext = React.createContext()
 
 export function AuthProvider({ children }) {
   const [user, setUser] = React.useState(null)
