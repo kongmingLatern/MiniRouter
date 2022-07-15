@@ -128,9 +128,9 @@ function User() {
   return (
     <div>
       <h1>User</h1>
-      <p>{auth.user?.username}</p>
+      <p>{auth.user}</p>
       <button onClick={() => {
-        auth.signout(navigate('/')
+        auth.signout(() => navigate('/')
         )
       }}>
         退出登录
@@ -142,25 +142,43 @@ function Login() {
   const auth = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
-  const from = location.state?.from.pathname || '/'
+  const from = location.state?.from?.pathname || '/'
 
   if (auth.user) {
     return <Navigate to={from} />
   }
 
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+
+  //   let formData = new FormData(event.currentTarget);
+  //   let newUser = formData.get("username");
+
+  //   auth.signin({ newUser }, () => {
+  //     navigate(from, { replace: true });
+  //   });
+  // }
   const submit = (e) => {
-    const formData = new FormData()
-    const newUser = formData.get('username')
-    auth.signin({ newUser }, () => {
+    e.preventDefault();
+    const formDate = new FormData(e.currentTarget)
+    const newUser = formDate.get('username')
+    console.log('newUser', newUser);
+    auth.signin(newUser, () => {
       navigate(from, { replace: true })
     })
   }
   return (
     <div>
       <h1>Login</h1>
+      {/* <form onSubmit={handleSubmit}>
+        <label>
+          Username: <input name="username" type="text" />
+        </label>{" "}
+        <button type="submit">Login</button>
+      </form> */}
       <form onSubmit={submit}>
         <input type="text" name="username" />
-        <button type="submit">Login</button>
+        <button type="submit">login</button>
       </form>
     </div>
   )
