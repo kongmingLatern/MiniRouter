@@ -1,5 +1,15 @@
 // import { Outlet } from "react-router-dom"
-// import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  Outlet,
+  Navigate,
+  useNavigate,
+  useParams,
+  useLocation
+} from "react-router-dom"
 // export default function App() {
 //   return (
 //     <div>
@@ -22,10 +32,11 @@
 //     </div>
 //   )
 // }
-import { BrowserRouter as Router, Routes, Route, Link, Outlet } from "./mini-react-router/router"
-import { useLocation, useNavigate, useParams } from "./mini-react-router/hooks"
+// import { BrowserRouter as Router, Routes, Route, Link, Outlet } from "./mini-react-router/router"
+// import { useLocation, useNavigate, useParams } from "./mini-react-router/hooks"
 import { AuthProvider } from "./mini-react-router/Login/auth"
 import useAuth from './mini-react-router/hooks/useAuth';
+// import useLocation from './mini-react-router/hooks/useLocation';
 export default function App() {
   return (
     <div className="app">
@@ -37,7 +48,12 @@ export default function App() {
               <Route path="product" element={<Product />} >
                 <Route path=":id" element={<ProductDetail />} />
               </Route>
-              <Route path="user" element={<User />} />
+              <Route path="user" element={
+                <RequireAuth>
+                  <User />
+                </RequireAuth>
+              }
+              />
               <Route path="login" element={<Login />} />
               <Route path="*" element={<NoMatch />} />
             </Route>
@@ -94,17 +110,15 @@ function ProductDetail() {
   )
 }
 
-function RequireAuth() {
-  const auth = useAuth()
-  const location = useLocation()
+function RequireAuth({ children }) {
+  let auth = useAuth();
+  let location = useLocation();
+
   if (!auth.user) {
-    return <Navigate to={'/login'} state={{ from: location }} replace={true}></Navigate>
+    return <Navigate to="/login" state={{ from: location }} replace={true} />;
   }
-  return (
-    <div>
-      <h1>RequireAuth</h1>
-    </div>
-  )
+
+  return children;
 }
 
 

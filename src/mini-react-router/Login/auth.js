@@ -1,4 +1,5 @@
 import React from 'react';
+
 const fakeAuthProvider = {
   isAuthenticated: false,
   signin(callback) {
@@ -21,7 +22,7 @@ export function AuthProvider({ children }) {
     callback()
   }
 
-  const signout = (newUser, callback) => {
+  const signout = (callback) => {
     setUser(null)
     callback()
   }
@@ -31,6 +32,8 @@ export function AuthProvider({ children }) {
   }
 
   return (
-    <AuthContext.Provider value={value} children={children} />
+    <AuthContext.Provider value={value}>
+      {children}
+    </AuthContext.Provider>
   )
 };

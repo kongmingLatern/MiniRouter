@@ -1,4 +1,4 @@
-import { React } from 'react';
+import React from 'react';
 import { AuthContext } from './../Login/auth';
 
 export default function useAuth() {
