@@ -130,9 +130,26 @@ function User() {
   )
 }
 function Login() {
+  const auth = useAuth()
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const from = location.state?.from.pathname || '/'
+
+  const submit = (e) => {
+    const formData = new FormData()
+    const newUser = formData.get('username')
+    auth.signin({ newUser }, () => {
+      navigate(from, { replace: true })
+    })
+  }
   return (
     <div>
       <h1>Login</h1>
+      <form onSubmit={submit}>
+        <input type="text" name="username" />
+        <button type="submit">提交</button>
+      </form>
     </div>
   )
 }
