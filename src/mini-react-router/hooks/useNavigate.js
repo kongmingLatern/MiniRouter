@@ -5,5 +5,9 @@ export default function useNavigate() {
   // 跳转
   const { navigator } = React.useContext(NavigationContext)
 
-  return navigator.push
+  const navigate = (to, options = {}) => {
+    (!!options.replace ? navigator.replace : navigate.push)(to, options.state)
+  }
+
+  return navigate
 };
