@@ -4,6 +4,7 @@ import Routes from "./Routes";
 import Link from "./Link";
 import Router from "./Router";
 import Outlet from "./Outlet";
+import Navigate from "./Navigate";
 
 
 export {
@@ -12,5 +13,6 @@ export {
   Router,
   Link,
   Routes,
-  Outlet
+  Outlet,
+  Navigate
 }
