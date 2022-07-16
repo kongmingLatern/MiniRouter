@@ -1,5 +1,9 @@
+import { useEffect } from 'react';
+import { useNavigate } from './../hooks';
 export default function Navigate({ to, state, replace }) {
-  return (
-    <div>Navigate</div>
-  )
+  let navigate = useNavigate()
+  useEffect(() => {
+    navigate(to)
+  })
+  return null
 }
