@@ -36,6 +36,7 @@ import { BrowserRouter as Router, Routes, Route, Link, Outlet, Navigate } from "
 import { useLocation, useNavigate, useParams } from "./mini-react-router/hooks"
 import { AuthProvider } from "./mini-react-router/Login/auth"
 import useAuth from './mini-react-router/hooks/useAuth';
+import About from "./mini-react-router/pages/About";
 // import useLocation from './mini-react-router/hooks/useLocation';
 export default function App() {
   return (
@@ -55,6 +56,7 @@ export default function App() {
               }
               />
               <Route path="login" element={<Login />} />
+              <Route path="about" element={<About />} />
               <Route path="*" element={<NoMatch />} />
             </Route>
           </Routes>
@@ -75,6 +77,8 @@ function Layout() {
       <Link to="/user">用户中心</Link>
       <br />
       <Link to="/Login">登录</Link>
+      <br />
+      <Link to="/about">关于</Link>
       <Outlet />
     </>
   )
