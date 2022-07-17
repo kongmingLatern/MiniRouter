@@ -1,15 +1,14 @@
-// import { Outlet } from "react-router-dom"
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-//   Link,
-//   Outlet,
-//   Navigate,
-//   useNavigate,
-//   useParams,
-//   useLocation
-// } from "react-router-dom"
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  Outlet,
+  Navigate,
+  useNavigate,
+  useParams,
+  useLocation
+} from "react-router-dom"
 // export default function App() {
 //   return (
 //     <div>
@@ -32,12 +31,16 @@
 //     </div>
 //   )
 // }
-import { BrowserRouter as Router, Routes, Route, Link, Outlet, Navigate } from "./mini-react-router/router"
-import { useLocation, useNavigate, useParams } from "./mini-react-router/hooks"
+// import { BrowserRouter as Router, Routes, Route, Link, Outlet, Navigate } from "./mini-react-router/router"
+// import { useLocation, useNavigate, useParams } from "./mini-react-router/hooks"
 import { AuthProvider } from "./mini-react-router/Login/auth"
 import useAuth from './mini-react-router/hooks/useAuth';
-import About from "./mini-react-router/pages/About";
+// import About from "./mini-react-router/pages/About";
+import React from "react";
 // import useLocation from './mini-react-router/hooks/useLocation';
+
+const About = React.lazy(() => import("./mini-react-router/pages/About"))
+
 export default function App() {
   return (
     <div className="app">
@@ -56,7 +59,11 @@ export default function App() {
               }
               />
               <Route path="login" element={<Login />} />
-              <Route path="about" element={<About />} />
+              <Route path="about" element={
+                <React.Suspense fallback={<h1>Loading中</h1>}>
+                  <About />
+                </React.Suspense>
+              } />
               <Route path="*" element={<NoMatch />} />
             </Route>
           </Routes>
