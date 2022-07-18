@@ -1,3 +1,7 @@
-export default function useResolvedPath() {
-  return
+export default function useResolvedPath(to) {
+  return {
+    pathname: to,
+    hash: '',
+    search: ''
+  }
 };
