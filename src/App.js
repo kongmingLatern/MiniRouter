@@ -40,6 +40,8 @@ import { AuthProvider } from "./mini-react-router/Login/auth"
 import useAuth from './mini-react-router/hooks/useAuth';
 // import About from "./mini-react-router/pages/About";
 import React from "react";
+import useResolvedPath from './mini-react-router/hooks/useResolvedPath';
+import useMatch from './mini-react-router/hooks/useMatch';
 // import useLocation from './mini-react-router/hooks/useLocation';
 
 const About = React.lazy(() => import("./mini-react-router/pages/About"))
