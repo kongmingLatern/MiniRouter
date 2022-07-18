@@ -1,10 +1,11 @@
-import { useMemo } from "react"
+import React from "react"
 export default function useResolvedPath(to) {
-  return useMemo(() => {
-    return {
+  return React.useMemo(
+    () => ({
       pathname: to,
-      hash: '',
-      search: ''
-    }
-  }, [to])
+      hash: "",
+      search: "",
+    }),
+    [to]
+  )
 };

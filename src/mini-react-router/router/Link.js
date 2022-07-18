@@ -1,5 +1,5 @@
 import { useNavigate } from "../hooks";
-export default function Link({ to, children }) {
+export default function Link({ to, children, ...rest }) {
   // 返回了一个 xxx.push 方法
   const navigate = useNavigate()
   const handle = (e) => {
@@ -8,7 +8,7 @@ export default function Link({ to, children }) {
     navigate(to)
   }
   return (
-    <a href={to} onClick={handle}>
+    <a href={to} onClick={handle} {...rest}>
       {children}
     </a>
   )
