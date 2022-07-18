@@ -8,7 +8,9 @@ import {
   Navigate,
   useNavigate,
   useParams,
-  useLocation
+  useLocation,
+  useMatch,
+  useResolvedPath
 } from "react-router-dom"
 // export default function App() {
 //   return (
@@ -75,8 +77,11 @@ export default function App() {
 }
 
 function CustomNavLink({ to, ...rest }) {
+  const resolved = useResolvedPath(to)
+  const match = useMatch({ path: resolved.pathname, end: true })
   return (
-    <NavLink to={to} {...rest} style={({ isActive }) => ({ color: isActive ? 'blue' : 'black' })}></NavLink>
+    // <NavLink to={to} {...rest} style={({ isActive }) => ({ color: isActive ? 'blue' : 'black' })}></NavLink>
+    <Link to={to} {...rest} style={{ color: match ? 'blue' : 'black' }}></Link>
   )
 }
 
@@ -110,7 +115,7 @@ function Product() {
     <>
       <h1>Product</h1>
       {/* <Link to="123">跳转详情页</Link> */}
-      <Link to="/product/123">查看商品123</Link>
+      <CustomNavLink to="/product/123">查看商品123</CustomNavLink>
       {/* <Link to="/product/1234444">查看商品1234444</Link> */}
       <Outlet />
     </>
