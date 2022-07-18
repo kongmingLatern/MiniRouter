@@ -1,17 +1,17 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link,
-  // NavLink,
-  Outlet,
-  Navigate,
-  useNavigate,
-  useParams,
-  useLocation,
-  useMatch,
-  useResolvedPath
-} from "react-router-dom"
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route,
+//   Link,
+//   // NavLink,
+//   Outlet,
+//   Navigate,
+//   useNavigate,
+//   useParams,
+//   useLocation,
+//   useMatch,
+//   useResolvedPath
+// } from "react-router-dom"
 // export default function App() {
 //   return (
 //     <div>
@@ -34,8 +34,8 @@ import {
 //     </div>
 //   )
 // }
-// import { BrowserRouter as Router, Routes, Route, Link, Outlet, Navigate } from "./mini-react-router/router"
-// import { useLocation, useNavigate, useParams } from "./mini-react-router/hooks"
+import { BrowserRouter as Router, Routes, Route, Link, Outlet, Navigate } from "./mini-react-router/router"
+import { useLocation, useNavigate, useParams } from "./mini-react-router/hooks"
 import { AuthProvider } from "./mini-react-router/Login/auth"
 import useAuth from './mini-react-router/hooks/useAuth';
 // import About from "./mini-react-router/pages/About";

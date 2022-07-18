@@ -4,6 +4,8 @@ import useLocation from "./useLocation";
 import useOutlet from "./useOutlet";
 import useParams from "./useParams";
 import useAuth from "./useAuth";
+import useMatch from "./useMatch";
+import useResolvedPath from "./useResolvedPath";
 
 
 export {
@@ -12,5 +14,7 @@ export {
   useLocation,
   useOutlet,
   useParams,
-  useAuth
+  useAuth,
+  useMatch,
+  useResolvedPath
 }
