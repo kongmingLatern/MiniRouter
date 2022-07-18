@@ -3,6 +3,7 @@ import {
   Routes,
   Route,
   Link,
+  NavLink,
   Outlet,
   Navigate,
   useNavigate,
@@ -73,19 +74,25 @@ export default function App() {
   )
 }
 
+function CustomNavLink({ to, ...rest }) {
+  return (
+    <NavLink to={to} {...rest} style={({ isActive }) => ({ color: isActive ? 'blue' : 'black' })}></NavLink>
+  )
+}
+
 function Layout() {
   return (
     <>
       <h1>Layout</h1>
-      <Link to="/">首页</Link>
+      <CustomNavLink to="/">首页</CustomNavLink>
       <br />
-      <Link to="/product">商品</Link>
+      <CustomNavLink to="/product">商品</CustomNavLink>
       <br />
-      <Link to="/user">用户中心</Link>
+      <CustomNavLink to="/user">用户中心</CustomNavLink>
       <br />
-      <Link to="/Login">登录</Link>
+      <CustomNavLink to="/Login">登录</CustomNavLink>
       <br />
-      <Link to="/about">关于</Link>
+      <CustomNavLink to="/about">关于</CustomNavLink>
       <Outlet />
     </>
   )
